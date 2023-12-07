@@ -1,0 +1,98 @@
+{% extends 'GestionApp/base.html' %}
+{% block content %}
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-4 text-dark"> <b>FORMULAIRE </b></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Ajouter un Membre</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    {% for mess in messages %}
+   <div class="content">
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+       <strong>{{mess}}</strong>
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+   </div>
+   {% endfor %}
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Ajouter un Membre</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Profile</label>
+                        {{form.photo_profile}}
+                    </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label >Nom</label>
+                        {{form.Nom}}
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label >Prenom</label>
+                        {{form.prenom}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label >email</label>
+                    {{form.Email}}
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label >Tel</label>
+                        {{form.Tel}}
+                      </div>
+                    </div>
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label >fonction</label>
+                        {{form.Role}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label >description</label>
+                    {{form.description}}
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+    </section>
+
+ </div>
+
+{% endblock %}

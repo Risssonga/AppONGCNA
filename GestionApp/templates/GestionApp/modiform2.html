@@ -1,0 +1,94 @@
+{% extends 'GestionApp/base.html' %}
+{% block content %}
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-4 text-dark"> <b>FORMULAIRE </b></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Modifier un Membre</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Modifier un Membre</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="{% url 'update' membre.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Profile</label>
+                    {% if membre.photo_profile %}
+                        <img src="{{ membre.photo_profile.url }}" class="img-circle" style="height: 100px;" alt="User Image">
+                    {% endif %}
+                    <div class="col-sm-6">
+                      <input type="file"  name="photo_profile" class="form-control">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label >Nom</label>
+                        <input type="text" Required name="Nom" value="{{membre.Nom}}" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label >Prenom</label>
+                        <input type="text" Required name="prenom" value="{{membre.prenom }}" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label >email</label>
+                    <input type="email" Required name="Email" value="{{membre.Email }}" class="form-control">
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label >Tel</label>
+                        <input type="text" Required name="Tel" value="{{membre.Tel }}" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label >fonction</label>
+                        <input type="text" Required name="Role" value="{{membre.Role }}" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label >description</label>
+                    <input type="text" Required name="description" value="{{membre.description }}" class="form-control">
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Modifier</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </section>
+
+ </div>
+
+{% endblock %}
